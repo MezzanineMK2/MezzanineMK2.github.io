@@ -1,39 +1,47 @@
 <html>
-  <style type="text/css">
-    .outer {
-      display: table;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-    }
+  <head>
+    <title>LT-Roulette</title>
+    <style type="text/css">
+      .outer {
+        display: table;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
 
-    .middle {
-      display: table-cell;
-      vertical-align: middle;
-    }
+      .middle {
+        display: table-cell;
+        vertical-align: middle;
+      }
 
-    .inner {
-      margin-left: auto;
-      margin-right: auto; 
-      width: 500px;
-    }
+      .inner {
+        margin-left: auto;
+        margin-right: auto; 
+        width: 600px;
+      }
 
-    #name {
-      height: 100px;
-      font-size: 102px;     
-    }
-  </style>
+      #name {
+        height: 100px;
+        font-size: 102px;     
+      }
+
+      #spin {
+        font-size: 36px;
+      }
+    </style>    
+  </head>
+
   <body style="text-align: center;">
     <div class="outer">
       <div class="middle">
         <div class="inner">
           <h1 id="name">Ready!</h1>
-          <button onclick="startRoulette()">回せ！</button>
+          <button id="spin" onclick="startRoulette()">回せ！</button>
         </div>
       </div>
     </div>
     <script type="text/javascript">
-      var NAMES = ["アレックス", "佐藤", "岩館", "近藤", "加賀", "佐々木", "川山", "山下", "宮崎", "本間", "東原", "成田", "桑田", "福西"];
+      var NAMES = ["アレックス", "佐藤", "岩館", "近藤", "加賀", "佐々木", "川山", "山下", "宮崎", "本間", "東原", "成田", "桑田", "福西", "かわべ", "岡野"];
       var MAX_DELAY = 500;
       var currentDelay;
       var timer;
@@ -59,6 +67,7 @@
           currentDelay += 30;
           timer = window.setTimeout(rouletteTick, currentDelay);
         }else{
+          document.getElementById("spin").disabled = false;
           document.getElementById("name").style.color = "black";
         }
       }
@@ -66,6 +75,7 @@
       function startRoulette(){
         currentDelay = 10;
         window.clearTimeout(timer);
+        document.getElementById("spin").disabled = true;
         document.getElementById("name").style.color = "grey";
         rouletteTick();
       }
