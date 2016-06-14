@@ -1,5 +1,74 @@
 <html>
-  <body>
-    <p>Hi!</p>
+  <style type="text/css">
+    .outer {
+      display: table;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    .middle {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .inner {
+      margin-left: auto;
+      margin-right: auto; 
+      width: 500px;
+    }
+
+    #name {
+      height: 100px;
+      font-size: 102px;     
+    }
+  </style>
+  <body style="text-align: center;">
+    <div class="outer">
+      <div class="middle">
+        <div class="inner">
+          <h1 id="name">Ready!</h1>
+          <button onclick="startRoulette()">回せ！</button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var NAMES = ["Alex", "佐藤", "岩館", "近藤", "加賀", "佐々木"];
+      var MAX_DELAY = 500;
+      var currentDelay;
+      var timer;
+      var lastName = "";
+      
+      function randomInt(min, max){
+        return Math.floor((Math.random() * (min + max)) + min);
+      }
+
+      function randomName(){
+        var nextName = lastName;
+        while(nextName === lastName){
+          nextName = NAMES[randomInt(0, NAMES.length)];
+        }
+        lastName = nextName;
+        return nextName;
+      }
+
+      function rouletteTick(){
+        var name = randomName();
+        document.getElementById("name").innerHTML = name;
+        if(currentDelay < MAX_DELAY){
+          currentDelay += 30;
+          timer = window.setTimeout(rouletteTick, currentDelay);
+        }else{
+          document.getElementById("name").style.color = "black";
+        }
+      }
+
+      function startRoulette(){
+        currentDelay = 10;
+        window.clearTimeout(timer);
+        document.getElementById("name").style.color = "grey";
+        rouletteTick();
+      }
+    </script>
   </body>
 </html>
