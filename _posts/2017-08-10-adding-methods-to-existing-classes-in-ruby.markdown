@@ -7,7 +7,7 @@ categories: Ruby
 Ever wonder why some classes have methods that only work when a certain library is "required"?
 {% highlight ruby %}
 > {:foo => "bar"}.to_json
-NoMethodError: undefined method `to_json' for {:foo=>"bar"}:Hash
+NoMethodError: undefined method `to_json` for {:foo=>"bar"}:Hash
 > require 'json'
 true
 > {:foo => "bar"}.to_json
