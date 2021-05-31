@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CISOMETER</title>
+    <title>ALEX</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
@@ -10,85 +10,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style type="text/css">
-        .ui-progressbar-value {
-            height: 0px;
-            background-image: url("progressbg.png");
-            background-position: bottom 32 left 0;
 
-        }
     </style>
     <script>
         $( function() {
-            var progressbar = $("#progressbar");
-            var progressLabel = $(".progress-label");
-            var cisVal = Math.floor(Math.random() * 100);
 
-            function ratingText(val){
-                if (val < 20)
-                    return 'CIS';
-                if (val < 40)
-                    return 'ALMOST CIS';
-                if (val < 60)
-                    return "CISN'T";
-                if (val < 80)
-                    return "TRANS?";
-                return "TRANS!";
-            }
-
-            function setRatingBG(val){
-                var progressbarValue = progressbar.find(".ui-progressbar-value");
-                var offset = 0;
-                if (val < 20)
-                    offset = 32;                    
-                else if (val < 40)
-                    offset = 64;
-                else if (val < 60)
-                    offset = 96;
-                else if (val < 80)
-                    offset = 128;
-                progressbarValue.css({"background-position": "bottom " + offset + "px left 0"});
-            }
-
-            progressbar.progressbar({
-                value: false,
-                change: function() {
-                    var txt = ratingText(progressbar.progressbar("value"));
-                    progressLabel.text(txt);
-                    $("#result-value").text(txt);
-                    setRatingBG(progressbar.progressbar("value"));
-                }
-            });
-
-            function progress() {
-                progressbar.find(".ui-progressbar-value").css({"height": "32px"});
-                var val = progressbar.progressbar( "value" ) || 0;
-                progressbar.progressbar("value", val + 1);
-                if (val < cisVal) {
-                    setTimeout(progress, 40);
-                } else {                    
-                    $("#result").show();
-                }
-            }
-            setTimeout(progress, 2000);
         });
     </script>   
 </head>
 <body>
     <div class="container" style="text-align: center; padding-top:300px;">
-        <h1>CISOMETER™</h1>
-        <br>
-        <br>
-        <br>
-        <h4 class="progress-label">Calibrating...</h4>
-        <div style="">
-            <div id="progressbar" style="border: 1px solid black; height: 34px; border-radius: 2px;">
-                
-            </div>        
-        </div>
-        <br>
-        <br>
-        <br>
-        <h3 id="result" style="display: none;">RIGHT NOW, ALEX IS <span id="result-value" style="font-weight: bold;"></span></h3>
+        <h1>wut</h1>
     </div>
 </body>
 </html>
